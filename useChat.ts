@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { ChatMessage } from "../types";
+import { ChatMessage } from "./types";
 
 interface UseChatOptions {
   apiKey: string;

@@ -1,6 +1,6 @@
 {
   "name": "doctalkie-react",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "React component for DocTalkie AI chat widget",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",

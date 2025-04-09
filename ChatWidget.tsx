@@ -1,6 +1,6 @@
 import React from "react";
-import { ChatWidgetProps } from "../types";
-import { useChat } from "../hooks/useChat";
+import { ChatWidgetProps } from "./types";
+import { useChat } from "./useChat";
 
 const ChatWidget: React.FC<ChatWidgetProps> = ({
   apiKey,
