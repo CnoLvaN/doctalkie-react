@@ -28,19 +28,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/doctalkie-react.git"
+    "url": "https://github.com/CnoLvaN/doctalkie-react.git"
   },
   "keywords": [
     "react",
     "chat",
     "widget",
     "ai",
-    "doctalkie"
+    "doctalkie",
+    "chatbot"
   ],
-  "author": "Your Name <your.email@example.com>",
+  "author": "CnoLvaN <anordgame@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/your-username/doctalkie-react/issues"
+    "url": "https://github.com/CnoLvaN/doctalkie-react/issues"
   },
-  "homepage": "https://github.com/your-username/doctalkie-react#readme"
+  "homepage": "https://github.com/CnoLvaN/doctalkie-react#readme"
 }
