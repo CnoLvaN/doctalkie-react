@@ -28,7 +28,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CnoLvaN/doctalkie-react.git"
+    "url": "git+https://github.com/ijustseen/doctalkie-react.git"
   },
   "keywords": [
     "react",
@@ -38,10 +38,10 @@
     "doctalkie",
     "chatbot"
   ],
-  "author": "CnoLvaN <anordgame@gmail.com>",
+  "author": "ijustseen <anordgame@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/CnoLvaN/doctalkie-react/issues"
+    "url": "https://github.com/ijustseen/doctalkie-react/issues"
   },
-  "homepage": "https://github.com/CnoLvaN/doctalkie-react#readme"
+  "homepage": "https://github.com/ijustseen/doctalkie-react#readme"
 }
