@@ -14,6 +14,6 @@
     "moduleResolution": "node",
     "lib": ["es5", "es6", "dom"]
   },
-  "include": ["components", "hooks", "types", "ChatWidget.tsx"],
+  "include": ["component", "hooks", "types"],
   "exclude": ["node_modules", "dist"]
 }

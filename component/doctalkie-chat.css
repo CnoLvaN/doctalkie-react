@@ -1,0 +1,88 @@
+/* Animations */
+@keyframes dt-chat-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dt-chat-pulse {
+  /* For loading indicator */
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Keyframes for toggle button pulse effect */
+@keyframes dt-chat-pulse-border {
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--dt-pulse-color-rgb, 255, 255, 255), 0.7);
+  } /* Default white */
+  70% {
+    box-shadow: 0 0 0 10px rgba(var(--dt-pulse-color-rgb, 255, 255, 255), 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(var(--dt-pulse-color-rgb, 255, 255, 255), 0);
+  }
+}
+
+/* Loader Icon */
+.dt-chat-loader {
+  animation: dt-chat-spin 1s linear infinite;
+}
+
+/* Activity Indicator */
+.dt-chat-indicator {
+  animation: dt-chat-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Toggle Button Pulse Effect */
+.dt-chat-toggle-button.dt-chat-pulse-glow {
+  /* box-shadow uses --dt-pulse-color-rgb defined inline */
+  animation: dt-chat-pulse-border 2s infinite;
+}
+
+/* Close Button Hover Color */
+.dt-chat-close-button:hover {
+  color: var(--dt-close-hover-color, inherit); /* Use variable set inline */
+}
+
+/* Textarea */
+.dt-chat-textarea {
+  /* Base outline reset */
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+.dt-chat-textarea::placeholder {
+  color: var(
+    --dt-placeholder-color,
+    #a3a3a3
+  ); /* Use variable set inline, default grey */
+  opacity: 1; /* Override browser defaults */
+}
+.dt-chat-textarea:focus-visible {
+  outline: 1px solid var(--dt-ring-color, black); /* Use variable set inline */
+  outline-offset: 1px;
+}
+
+/* Send Button Hover/Disabled */
+.dt-chat-send-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+.dt-chat-send-button:not(:disabled):hover {
+  background-color: var(
+    --dt-button-hover-bg,
+    initial
+  ); /* Use variable set inline */
+}
+
+/* Toggle Button Hover */
+.dt-chat-toggle-button:not(:disabled):hover {
+  background-color: var(
+    --dt-toggle-hover-bg,
+    initial
+  ); /* Use variable set inline */
+}

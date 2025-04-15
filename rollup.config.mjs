@@ -24,5 +24,11 @@ export default {
         include: ["."],
       },
     }),
+    postcss({
+      extract: false,
+      modules: false,
+      use: ["sass"],
+      minimize: true,
+    }),
   ],
 };

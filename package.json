@@ -19,12 +19,14 @@
   "devDependencies": {
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
-    "typescript": "^4.6.0",
+    "postcss": "^8.5.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rollup": "^2.70.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-typescript2": "^0.31.2"
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-typescript2": "^0.31.2",
+    "typescript": "^4.6.0"
   },
   "repository": {
     "type": "git",
@@ -43,5 +45,10 @@
   "bugs": {
     "url": "https://github.com/ijustseen/doctalkie-react/issues"
   },
-  "homepage": "https://github.com/ijustseen/doctalkie-react#readme"
+  "homepage": "https://github.com/ijustseen/doctalkie-react#readme",
+  "dependencies": {
+    "react-markdown": "^10.1.0",
+    "react-textarea-autosize": "^8.5.9",
+    "remark-gfm": "^4.0.1"
+  }
 }

@@ -1,77 +1,197 @@
-# doctalkie-react
+# DocTalkie - AI Assistant Integration Service
 
-React component for DocTalkie AI chat widget
+Welcome to the official documentation for DocTalkie. Here you will find everything you need to embed the chat widget or build your own chat interface using our tools.
+
+DocTalkie allows you to create AI assistants based on your documents. This documentation covers how to integrate the chat experience into your application.
+
+Explore the sections below: 'Usage: Chat Widget' for the quickest integration, or 'Usage: Hook' for building a custom interface.
+
+---
 
 ## Installation
 
-```npm
-  npm install doctalkie-react
+To integrate DocTalkie into your React project, install the package using your preferred package manager:
+
+**Using npm:**
+
+```bash
+npm install doctalkie-react
 ```
 
-Or with yarn:
+**Using yarn:**
 
-```yarn
+```bash
 yarn add doctalkie-react
 ```
 
-## API Reference
+**Using pnpm:**
 
-### DocTalkieChat Component
+```bash
+pnpm add doctalkie-react
+```
 
-The main component that renders a chat interface for interacting with your documents.
+Once installed, you can import the necessary components or hooks into your application as shown in the usage sections.
 
-| Prop       | Type                  | Description                                        |
-| ---------- | --------------------- | -------------------------------------------------- |
-| `apiUrl`   | `string`              | The URL of your DocTalkie API endpoint             |
-| `apiKey`   | `string`              | Your DocTalkie API key                             |
-| `theme`    | `object` _(optional)_ | Custom theme options for the chat interface        |
-| `position` | `string` _(optional)_ | Position of the chat widget: `'right'` or `'left'` |
+---
 
-## Examples
+## Usage: Chat Widget (Minimal)
 
-Here's a simple example of how to use the DocTalkieChat component in a React application:
+The easiest way to add a DocTalkie chat to your application is by using the built-in `DocTalkieChat` component. It provides a ready-to-use floating chat interface. Below is the minimal setup required.
 
-```ts
-import React from "react";
-import { DocTalkieChat } from "doctalkie-react";
+**Minimal Example:**
 
-const API = 'your-api'
-const KEY = 'your-key'
+```typescript
+import DocTalkieChat from "@/components/doc-talkie-chat/doc-talkie-chat";
 
-function DocumentAssistantPage() {
+export default function MyApp() {
+  // Get these values from your DocTalkie dashboard for the specific bot
+  const botApiUrl = "YOUR_BOT_API_URL"; // Replace with your Bot's API URL
+  const botApiKey = "YOUR_BOT_API_KEY"; // Replace with your Bot's API Key
+
   return (
-    <div className="min-h-screen bg-gray-100">
-      <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
-          <h1 className="text-2xl font-bold text-gray-900">My Documentation</h1>
-        </div>
-      </header>
-
-      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div className="px-4 py-6 sm:px-0">
-          <div className="border-4 border-dashed border-gray-200 rounded-lg h-96 p-4">
-            <h2 className="text-xl font-semibold mb-4">
-              Product Documentation
-            </h2>
-            <p>This is where your documentation content would go...</p>
-          </div>
-        </div>
-      </main>
-
-      {/* DocTalkie Chat Widget */}
-      <DocTalkieChat
-        apiUrl=API
-        apiKey=KEY
-        position="right"
-        theme={{
-          primaryColor: "#3B82F6",
-          textColor: "#FFFFFF",
-          backgroundColor: "#1F2937",
-        }}
-      />
+    <div>
+      <h1>My Application</h1>
+      {/* Minimal chat widget setup */}
+      <DocTalkieChat apiURL={botApiUrl} apiKey={botApiKey} />
     </div>
   );
 }
-
-export default DocumentAssistantPage;
 ```
+
+Replace `YOUR_BOT_API_URL` and `YOUR_BOT_API_KEY` with the actual URL and key provided for your bot in the DocTalkie dashboard.
+
+---
+
+## Widget Configuration & Customization
+
+The `DocTalkieChat` component accepts required and optional props for customization:
+
+### Required Props
+
+| Prop     | Description                                                     | Type     |
+| :------- | :-------------------------------------------------------------- | :------- |
+| `apiURL` | The **full API URL** for your bot, obtained from the dashboard. | `string` |
+| `apiKey` | The specific API key for your bot, obtained from the dashboard. | `string` |
+
+### Optional Props
+
+| Prop             | Description                                                                                    | Type     | Default                               |
+| :--------------- | :--------------------------------------------------------------------------------------------- | :------- | :------------------------------------ |
+| `theme`          | Visual theme ("light", "dark", or "doctalkie").                                                | `string` | `"doctalkie"`                         |
+| `accentColor`    | Background color for user messages (e.g., "#FF5733"). Overrides theme color for user messages. | `string` | Theme default                         |
+| `position`       | Widget position ("bottom-right" or "bottom-left").                                             | `string` | `"bottom-right"`                      |
+| `welcomeMessage` | Custom initial message from the assistant.                                                     | `string` | "Hi there! How can I help you today?" |
+| `className`      | Additional CSS classes for the root widget container.                                          | `string` | None                                  |
+
+### Example with Customizations
+
+Demonstrating various optional props.
+
+```typescript
+import DocTalkieChat from "@/components/doc-talkie-chat/doc-talkie-chat";
+// import './my-custom-styles.css'; // If using className
+
+export default function AnotherPage() {
+  const botApiUrl = "YOUR_BOT_API_URL"; // Replace with your Bot's API URL
+  const botApiKey = "YOUR_BOT_API_KEY"; // Replace with your Bot's API Key
+
+  return (
+    <div className="app">
+      <header>
+        <h1>Another Page with Customized Chat</h1>
+      </header>
+      {/* --- Customized DocTalkie Chat Widget --- */}
+      <DocTalkieChat
+        apiURL={botApiUrl}
+        apiKey={botApiKey}
+        // Customizations:
+        theme="light"
+        position="bottom-left"
+        accentColor="#8B5CF6" // Example: Violet color for user messages
+        welcomeMessage="Ask me anything about the advanced topics!"
+        className="my-custom-widget-styles" // Optional custom class for further styling
+      />
+      {/* --------------------------------------- */}
+    </div>
+  );
+}
+```
+
+---
+
+## Usage: Hook (Advanced)
+
+For complete control over the chat UI, you can use the `useDocTalkie` hook. It handles the API communication and state management, allowing you to build a custom interface.
+
+**Example:**
+
+```typescript
+import { useState, useEffect } from "react";
+import {
+  useDocTalkie,
+  type Message,
+} from "@/components/doc-talkie-chat/use-doc-talkie";
+
+function MyCustomChatInterface() {
+  const botApiUrl = "YOUR_BOT_API_URL"; // Replace with your Bot's API URL
+  const botApiKey = "YOUR_BOT_API_KEY"; // Replace with your Bot's API Key
+  const [input, setInput] = useState("");
+
+  const { messages, isLoading, error, sendMessage } = useDocTalkie({
+    apiURL: botApiUrl, // Use the full URL directly
+    apiKey: botApiKey,
+    // Optional: Provide initial messages if needed
+    // initialMessages: [{ id: 'custom-start', content: 'Start here!', sender: 'system' }]
+  });
+
+  const handleSend = () => {
+    if (input.trim()) {
+      sendMessage(input);
+      setInput("");
+    }
+  };
+
+  return (
+    <div className="my-chat-container">
+      <div className="messages-area">
+        {error && <div className="error-message">{error}</div>}
+        {messages.map((msg: Message) => (
+          <div key={msg.id} className={`message ${msg.sender}`}>
+            {/* Render your message bubble here using msg.content */}
+            {/* You might want to use react-markdown here too! */}
+            <p>{msg.content}</p>
+          </div>
+        ))}
+        {isLoading && (
+          <div className="loading-indicator">Assistant is typing...</div>
+        )}
+      </div>
+      <div className="input-area">
+        <input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Ask something..."
+          disabled={isLoading}
+        />
+        <button onClick={handleSend} disabled={isLoading || !input.trim()}>
+          Send
+        </button>
+      </div>
+    </div>
+  );
+}
+```
+
+The hook returns an object containing:
+
+- `messages`: An array of message objects.
+- `isLoading`: Boolean indicating if a response is pending.
+- `error`: String containing an error message, if any.
+- `sendMessage`: Function to send a new user message (takes the message string as input).
+
+Remember to replace the placeholder IDs and keys, and style the elements (`.my-chat-container`, `.message`, etc.) according to your design.
+
+---
+
+Manage your bots and API keys via the [DocTalkie Dashboard](/dashboard).

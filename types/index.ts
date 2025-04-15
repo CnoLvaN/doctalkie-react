@@ -1,19 +1,26 @@
-export interface ChatMessage {
-  text: string;
-  isUser: boolean;
-  timestamp?: Date;
-}
+// Тип для сообщений чата
+export type Message = {
+  id: string;
+  content: string;
+  sender: "user" | "assistant";
+  timestamp: Date;
+  isLoading?: boolean;
+};
 
-export interface ChatWidgetProps {
+// Интерфейс для пропсов хука useDocTalkie
+export interface UseDocTalkieProps {
+  apiURL: string;
   apiKey: string;
-  initialMessage?: string;
-  className?: string;
-  style?: React.CSSProperties;
+  initialMessages: Message[];
 }
 
-export interface ChatState {
-  messages: ChatMessage[];
-  inputValue: string;
-  isLoading: boolean;
-  error: string | null;
+// Интерфейс для пропсов компонента DocTalkieChat
+export interface DocTalkieChatProps {
+  apiURL: string;
+  apiKey: string;
+  theme?: "dark" | "light" | "doctalkie";
+  accentColor?: string;
+  position?: "bottom-right" | "bottom-left";
+  welcomeMessage?: string;
+  className?: string; // Keep className for root container customization
 }
