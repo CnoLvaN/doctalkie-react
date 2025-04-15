@@ -1,5 +1,6 @@
 import typescript from "rollup-plugin-typescript2";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
+import styles from "rollup-plugin-styles";
 
 export default {
   input: "index.ts",
@@ -16,6 +17,7 @@ export default {
   ],
   plugins: [
     peerDepsExternal(),
+    styles(),
     typescript({
       tsconfigOverride: {
         compilerOptions: {
@@ -23,12 +25,6 @@ export default {
         },
         include: ["."],
       },
-    }),
-    postcss({
-      extract: false,
-      modules: false,
-      use: ["sass"],
-      minimize: true,
     }),
   ],
 };

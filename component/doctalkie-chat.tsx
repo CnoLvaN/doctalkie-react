@@ -7,7 +7,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { useDocTalkie } from "./use-doctalkie";
 import type { Message, DocTalkieChatProps } from "../types";
-import "./doc-talkie-chat.css";
+import "component/doc-talkie-chat.css";
 
 // Define SVG Icons directly in the component
 const IconMessageCircle = (props: React.SVGProps<SVGSVGElement>) => (
